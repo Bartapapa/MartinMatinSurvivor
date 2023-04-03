@@ -13,6 +13,11 @@ public class Weapon : MonoBehaviour
     private float _timeSinceLastShot = 0f;
     private bool _shootKeyUpSinceLastShot = true;
 
+    public float FireSpeedFactor = 1f;
+    public int BulletCount = 1;
+    public int PenetrationCount = 1;
+    public float BaseSpread = 5f;
+
     private void Update()
     {
         _timeSinceLastShot += Time.deltaTime;
@@ -39,14 +44,14 @@ public class Weapon : MonoBehaviour
             case SO_Weapon.FireInputMethod.Single:
                 if (_shootKeyUpSinceLastShot)
                 {
-                    if (_timeSinceLastShot > CurrentWeapon._timeBetweenTwoShots)
+                    if (_timeSinceLastShot > CurrentWeapon._timeBetweenTwoShots*FireSpeedFactor)
                     {
                         Shoot();
                     }
                 }
                 break;
             case SO_Weapon.FireInputMethod.Hold:
-                if (_timeSinceLastShot > CurrentWeapon._timeBetweenTwoShots)
+                if (_timeSinceLastShot > CurrentWeapon._timeBetweenTwoShots*FireSpeedFactor)
                 {
                     Shoot();
                 }
@@ -58,10 +63,31 @@ public class Weapon : MonoBehaviour
 
     private void Shoot()
     {
-        A_Projectile newProjectile = Instantiate<A_Projectile>(CurrentWeapon._projectile, _spawner.position, _spawner.rotation);
-        newProjectile.SetProjectile(CurrentWeapon);
+        StartCoroutine(ShootAllProjectiles());
 
+        //A_Projectile newProjectile = Instantiate<A_Projectile>(CurrentWeapon._projectile, _spawner.position, _spawner.rotation);
+        //newProjectile.SetProjectile(CurrentWeapon, PenetrationCount);
+
+        //_timeSinceLastShot = 0f;
+        //Debug.Log("shoot!");
+    }
+
+    private IEnumerator ShootAllProjectiles()
+    {
         _timeSinceLastShot = 0f;
-        Debug.Log("shoot!");
+        int bulletsShot = 0;
+        while (bulletsShot < BulletCount)
+        {
+            Debug.Log(bulletsShot);
+            float randomRot = Random.Range(-BaseSpread*BulletCount, BaseSpread*BulletCount);
+            A_Projectile newProjectile = Instantiate<A_Projectile>(CurrentWeapon._projectile, _spawner.position, _spawner.rotation);
+            newProjectile.SetProjectile(CurrentWeapon, PenetrationCount);
+            newProjectile.transform.Rotate(0, randomRot, 0);
+            bulletsShot += 1;
+            Debug.Log(bulletsShot);
+
+            yield return null;
+        }
+        yield return null;
     }
 }

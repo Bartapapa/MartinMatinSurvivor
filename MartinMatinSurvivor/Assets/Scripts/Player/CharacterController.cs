@@ -24,6 +24,7 @@ public class CharacterController : MonoBehaviour, ICharacterController
     public float MaxStableMoveSpeed = 10f;
     public float StableMovementSharpness = 15f;
     public float OrientationSharpness = 10f;
+    public float MovementFactor = 1f;
 
     [Header("Air Movement")]
     public float MaxAirMoveSpeed = 15f;
@@ -195,7 +196,7 @@ public class CharacterController : MonoBehaviour, ICharacterController
                         // Calculate target velocity
                         Vector3 inputRight = Vector3.Cross(_moveInputVector, Motor.CharacterUp);
                         Vector3 reorientedInput = Vector3.Cross(effectiveGroundNormal, inputRight).normalized * _moveInputVector.magnitude;
-                        Vector3 targetMovementVelocity = reorientedInput * MaxStableMoveSpeed;
+                        Vector3 targetMovementVelocity = reorientedInput * MaxStableMoveSpeed * MovementFactor;
 
                         // Smooth movement Velocity
                         currentVelocity = Vector3.Lerp(currentVelocity, targetMovementVelocity, 1f - Mathf.Exp(-StableMovementSharpness * deltaTime));
@@ -211,10 +212,10 @@ public class CharacterController : MonoBehaviour, ICharacterController
                             Vector3 currentVelocityOnInputsPlane = Vector3.ProjectOnPlane(currentVelocity, Motor.CharacterUp);
 
                             // Limit air velocity from inputs
-                            if (currentVelocityOnInputsPlane.magnitude < MaxAirMoveSpeed)
+                            if (currentVelocityOnInputsPlane.magnitude < MaxAirMoveSpeed * MovementFactor)
                             {
                                 // clamp addedVel to make total vel not exceed max vel on inputs plane
-                                Vector3 newTotal = Vector3.ClampMagnitude(currentVelocityOnInputsPlane + addedVelocity, MaxAirMoveSpeed);
+                                Vector3 newTotal = Vector3.ClampMagnitude(currentVelocityOnInputsPlane + addedVelocity, MaxAirMoveSpeed * MovementFactor);
                                 addedVelocity = newTotal - currentVelocityOnInputsPlane;
                             }
                             else

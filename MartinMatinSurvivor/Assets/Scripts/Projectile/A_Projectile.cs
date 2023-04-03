@@ -32,9 +32,10 @@ public abstract class A_Projectile : MonoBehaviour
         transform.position += transform.forward * _projectileSpeed * Time.deltaTime;
     }
 
-    public void SetProjectile(SO_Weapon weaponBase)
+    public void SetProjectile(SO_Weapon weaponBase, int penetrationCount)
     {
         _projectileSpeed = weaponBase._projectileSpeed;
         Damager.Damage = _projectileDamage;
+        Damager.PenetrationCount = penetrationCount;
     }
 }
