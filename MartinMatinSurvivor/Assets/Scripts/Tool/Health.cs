@@ -13,6 +13,8 @@ public class Health : MonoBehaviour
     public GameObject drop;
     public int ResourceDrop = 0;
 
+    public HealthBar healthBar;
+
     public bool IsDead = false;
 
 
@@ -22,6 +24,11 @@ public class Health : MonoBehaviour
     private void Start()
     {
         CurrentHealth = MaxHealth;
+        if (healthBar != null)
+        {
+            healthBar.SetMaxHealth(MaxHealth);
+        }
+       
     }
 
     public void Hurt(int damage)
@@ -30,6 +37,10 @@ public class Health : MonoBehaviour
         {
             CurrentHealth -= damage;
 
+            if (healthBar != null)
+            {
+                healthBar.Sethealth(CurrentHealth);
+            }
             
             onScale();
 
