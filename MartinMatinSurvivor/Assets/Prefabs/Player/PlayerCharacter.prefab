@@ -80,9 +80,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Motor: {fileID: 2228479720483240185}
-  MaxStableMoveSpeed: 10
+  MaxStableMoveSpeed: 6
   StableMovementSharpness: 15
   OrientationSharpness: 10
+  MovementFactor: 1
   MaxAirMoveSpeed: 15
   AirAccelerationSpeed: 15
   Drag: 0.1
@@ -99,6 +100,9 @@ MonoBehaviour:
   MeshRoot: {fileID: 0}
   CameraFollowPoint: {fileID: 0}
   CrouchedCapsuleHeight: 1
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!136 &2228479720483240186
 CapsuleCollider:
   m_ObjectHideFlags: 8
