@@ -12,6 +12,9 @@ public class EnemySpawner : MonoBehaviour
     [Header("List of spawn")]
     public List<Transform> Spawners = new List<Transform>();
 
+    [Header("List of Enemies")]
+    public List<Enemy> Enemies = new List<Enemy>();
+
     [Header("DEBUG-testEnemy")]
     public Enemy Enemy;
     public Transform DebugTarget;
@@ -35,13 +38,18 @@ public class EnemySpawner : MonoBehaviour
 
     private void GetNextTimeSpawn()
     {
-        _timeToNextSpawn = BaseTimeBetweenSpawn + (Random.Range(-MaxSpawnVariance, MaxSpawnVariance));
+        
+        float timeScale = Time.time*.05f;
+        _timeToNextSpawn = BaseTimeBetweenSpawn + (Random.Range(-MaxSpawnVariance, MaxSpawnVariance)-timeScale);
     }
 
     private void Spawn()
     {
-        int randomInt = Random.Range(0, Spawners.Count);
-        Enemy newEnemy = Instantiate<Enemy>(Enemy, Spawners[randomInt].position, Quaternion.identity);
-        newEnemy.InitializeEnemy(DebugTarget, 5f);
+        int randomIntSpawn = Random.Range(0, Spawners.Count);
+        int randomIntEnemy = Random.Range(0, Enemies.Count);
+
+
+        Enemy newEnemy = Instantiate<Enemy>(Enemies[randomIntEnemy], Spawners[randomIntSpawn].position, Quaternion.identity);
+        newEnemy.InitializeEnemy(DebugTarget, Random.Range(2f,5f));
     }
 }

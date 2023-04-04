@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "MartinMatinSurvivor/PowerUp/Powaaaaaaaaaaaaaaaa")]
 public class SO_PowerUpHolder : ScriptableObject
 {
     public float Factor;

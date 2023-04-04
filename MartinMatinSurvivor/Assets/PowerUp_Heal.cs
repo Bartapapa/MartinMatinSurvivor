@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerUp_Heal : A_PowerUp
 {
-    public int Heal = 5;
+    public int Heal = 1;
     public override float GetAffectedValue()
     {
         return Heal;
