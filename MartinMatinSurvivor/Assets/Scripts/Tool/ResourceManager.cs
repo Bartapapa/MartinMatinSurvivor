@@ -9,7 +9,13 @@ public class ResourceManager : MonoBehaviour
     public int Resource = 0;
     public int ResourceThreshold = 100;
 
+
+    public XPBar xpBar;
+
+
+
     public GameObject UpgradeUI;
+    public GameObject UpgradeUIImage;
 
     private void Awake()
     {
@@ -26,14 +32,29 @@ public class ResourceManager : MonoBehaviour
     private void Start()
     {
         UpgradeUI.SetActive(false);
+        UpgradeUIImage.SetActive(false);
+
+
+        xpBar.slider.maxValue = ResourceThreshold;
+
+        xpBar.SetXp(Resource);
+
     }
 
     public void AcquireResource(int quantity)
     {
         Resource += quantity;
+
+        if (xpBar != null)
+        {
+            xpBar.SetXp(Resource);
+        }
+
         if (Resource >= ResourceThreshold)
         {
             UpgradeUI.SetActive(true);
+            UpgradeUIImage.SetActive(true);
+
         }
     }
 
@@ -43,6 +64,8 @@ public class ResourceManager : MonoBehaviour
         if (Resource < ResourceThreshold)
         {
             UpgradeUI.SetActive(false);
+            UpgradeUIImage.SetActive(false);
+
         }
     }
 }

@@ -8,6 +8,7 @@ public class XPBar : MonoBehaviour
 
     public Slider slider;
 
+
     public void SetMaxXp(int xp)
     {
         slider.maxValue = xp;
