@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,10 @@ public class Health : MonoBehaviour
 
     public bool IsDead = false;
 
+
+    private Vector3 _originalScale;
+    private Vector3 _scaleTo;
+    
     private void Start()
     {
         CurrentHealth = MaxHealth;
@@ -24,6 +29,9 @@ public class Health : MonoBehaviour
         if (!IsDead)
         {
             CurrentHealth -= damage;
+
+            
+            onScale();
 
             if (CurrentHealth <= 0)
             {
@@ -67,4 +75,24 @@ public class Health : MonoBehaviour
 
         Destroy(this.gameObject);
     }
+
+    private void onScale()
+    {
+
+        _originalScale = transform.localScale;
+        _scaleTo = _originalScale * 1.2f;
+
+        transform.DOScale(_scaleTo, .2f)
+           
+           .OnComplete(() =>
+           {
+
+               transform.DOScale(_originalScale, .2f)
+               .SetEase(Ease.OutElastic);
+
+           });
+    }
+
+
+
 }

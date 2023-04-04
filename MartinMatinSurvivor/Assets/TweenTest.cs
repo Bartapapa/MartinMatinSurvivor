@@ -16,7 +16,7 @@ public class TweenTest : MonoBehaviour
         onScale();
     }
 
-    private void onScale()
+    public void onScale()
     {
         transform.DOScale(_scaleTo, .5f)
             .SetEase(Ease.Flash)

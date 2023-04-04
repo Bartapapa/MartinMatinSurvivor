@@ -80,10 +80,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e84aeaf099a194aa5526cb46323c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 1
+  MaxHealth: 2
   CurrentHealth: 0
   drop: {fileID: 0}
-  ResourceDrop: 50
+  ResourceDrop: 20
   IsDead: 0
 --- !u!65 &3121452752534900714
 BoxCollider:
