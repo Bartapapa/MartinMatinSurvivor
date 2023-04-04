@@ -82,12 +82,12 @@ public class Health : MonoBehaviour
         _originalScale = transform.localScale;
         _scaleTo = _originalScale * 1.2f;
 
-        transform.DOScale(_scaleTo, .2f)
+        transform.DOScale(_scaleTo, 0)
            
            .OnComplete(() =>
            {
 
-               transform.DOScale(_originalScale, .2f)
+               transform.DOScale(_originalScale, .5f)
                .SetEase(Ease.OutElastic);
 
            });
