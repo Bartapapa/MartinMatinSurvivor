@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4380650865804899135}
   - component: {fileID: -796224815472432210}
   m_Layer: 0
-  m_Name: Destructible Health
+  m_Name: Destructible Speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 8478304297492326972}
+  - {fileID: 1373716423436603368}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 1
   CurrentHealth: 0
-  drop: {fileID: 3372540648256797380, guid: 95e3ed82bb91dd043a8ddb3be401dc5f, type: 3}
+  drop: {fileID: 4649923051908327635, guid: 8e365e9a46224a4428d7e9a3fdf3f1cd, type: 3}
   ResourceDrop: 10
   IsDead: 0
 --- !u!54 &-796224815472432210
@@ -133,7 +133,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!1001 &8224212473814699479
+--- !u!1001 &1484730690991974403
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -217,9 +217,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 185315e3e738b894d9e34f679022c6f8, type: 3}
---- !u!4 &8478304297492326972 stripped
+--- !u!4 &1373716423436603368 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 185315e3e738b894d9e34f679022c6f8,
     type: 3}
-  m_PrefabInstance: {fileID: 8224212473814699479}
+  m_PrefabInstance: {fileID: 1484730690991974403}
   m_PrefabAsset: {fileID: 0}

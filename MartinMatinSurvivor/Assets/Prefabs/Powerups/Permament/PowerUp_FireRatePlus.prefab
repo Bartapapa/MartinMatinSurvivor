@@ -239,4 +239,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 0
   PowerupDuration: -1
-  FireSpeedFactor: 0.2
+  FireSpeedFactor: 0.9

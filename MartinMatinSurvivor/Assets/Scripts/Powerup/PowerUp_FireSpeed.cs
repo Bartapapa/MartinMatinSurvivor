@@ -5,7 +5,7 @@ using UnityEngine;
 public class PowerUp_FireSpeed : A_PowerUp
 {
     [Header("Powerup Parameters")]
-    public float FireSpeedFactor = .5f;
+    public float FireSpeedFactor = .1f;
 
     public override float GetAffectedValue()
     {

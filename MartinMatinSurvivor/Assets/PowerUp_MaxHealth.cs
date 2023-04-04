@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerUp_MaxHealth : A_PowerUp
 {
-    public int MaxHealthUp = 5;
+    public int MaxHealthUp = 1;
 
     public override float GetAffectedValue()
     {

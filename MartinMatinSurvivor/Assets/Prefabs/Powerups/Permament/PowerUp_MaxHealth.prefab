@@ -78,7 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 2
   PowerupDuration: -1
-  MaxHealthUp: 5
+  MaxHealthUp: 1
 --- !u!1 &317794322142182291
 GameObject:
   m_ObjectHideFlags: 0
