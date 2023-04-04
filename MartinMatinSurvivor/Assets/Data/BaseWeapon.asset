@@ -15,6 +15,6 @@ MonoBehaviour:
   _projectile: {fileID: 1859263647, guid: e2266cbc914f936409c66d41f78afa26, type: 3}
   _weaponModel: {fileID: 0}
   _fireInputMethod: 1
-  _timeBetweenTwoShots: 0.2
+  _timeBetweenTwoShots: 1
   _projectileSpeed: 10
   _projectileDamage: 1
